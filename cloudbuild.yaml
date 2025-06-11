@@ -23,6 +23,8 @@ steps:
       - '1'
       - '--min-instances'
       - '0'
+      - '--port'
+      - '5000'
       - '--quiet'
   
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
