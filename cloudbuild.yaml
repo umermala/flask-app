@@ -24,7 +24,20 @@ steps:
       - '--min-instances'
       - '0'
       - '--quiet'
-      - '--allow-unauthenticated'
+  
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'services'
+      - 'add-iam-policy-binding'
+      - 'flask-app-test'
+      - '--region'
+      - 'us-central1'
+      - '--member'
+      - 'allUsers'
+      - '--role'
+      - 'roles/run.invoker'
 
 serviceAccount: 603483693640-compute@developer.gserviceaccount.com
 
