@@ -1,0 +1,8 @@
+steps:
+  - name: ''
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/just-terminus-462608-a8/docker-registry/flask-app', '.']
+
+serviceAccount: 603483693640-compute@developer.gserviceaccount.com
+
+options:
+  logging: CLOUD_LOGGING_ONLY
