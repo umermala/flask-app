@@ -1,6 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/just-terminus-462608-a8/docker-registry/flask-app', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/just-terminus-462608-a8/docker-registry/flask-app:$COMMIT_SHA', '.']
+  
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/just-terminus-462608-a8/docker-registry/flask-app:$COMMIT_SHA']
 
 serviceAccount: 603483693640-compute@developer.gserviceaccount.com
 
