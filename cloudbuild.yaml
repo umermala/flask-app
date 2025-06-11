@@ -4,6 +4,27 @@ steps:
   
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/just-terminus-462608-a8/docker-registry/flask-app:$COMMIT_SHA']
+  
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'flask_app_test'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/just-terminus-462608-a8/docker-registry/flask-app:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--memory'
+      - '128Mi'
+      - '--cpu'
+      - '1'
+      - '--min-instances'
+      - '0'
+      - '--quiet'
+      - '--allow-unauthenticated'
 
 serviceAccount: 603483693640-compute@developer.gserviceaccount.com
 
