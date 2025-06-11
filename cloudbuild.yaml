@@ -10,7 +10,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'flask_app_test'
+      - 'flask-app-test'
       - '--image'
       - 'us-central1-docker.pkg.dev/just-terminus-462608-a8/docker-registry/flask-app:$COMMIT_SHA'
       - '--region'
