@@ -7,6 +7,7 @@ steps:
   
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
+    secretEnv: ['DB_PASSWORD', 'API_KEY']
     args:
       - 'run'
       - 'deploy'
