@@ -7,9 +7,6 @@ steps:
   
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
-    secretEnv:
-      - DB_PASSWORD
-      - API_KEY
     args:
       - 'run'
       - 'deploy'
@@ -29,6 +26,7 @@ steps:
       - '--port'
       - '5000'
       - '--quiet'
+      - '--set-secrets=DB_PASSWORD=DB_PASSWORD:latest,API_KEY=API_KEY:latest'
   
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
@@ -46,13 +44,13 @@ steps:
 
 serviceAccount: 603483693640-compute@developer.gserviceaccount.com
 
-secrets:
-  - secret: DB_PASSWORD
-    version: latest
-    env: DB_PASSWORD
-  - secret: API_KEY
-    version: latest
-    env: API_KEY
+availableSecrets:
+  secretManager:
+    - versionName: projects/just-terminus-462608-a8/secrets/DB_PASSWORD/versions/latest
+      env: 'DB_PASSWORD'
+    - versionName: projects/just-terminus-462608-a8/secrets/API_KEY/versions/latest
+      env: 'API_KEY'
+
 
 options:
   logging: CLOUD_LOGGING_ONLY
